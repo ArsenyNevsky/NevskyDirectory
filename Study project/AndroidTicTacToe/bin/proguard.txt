@@ -1,0 +1,19 @@
+# view AndroidManifest.xml #generated:15
+-keep class com.samples.AFirstProject.GameActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:7
+-keep class com.samples.AFirstProject.MainActivity { <init>(...); }
+
+# onClick res/layout/game.xml #generated:13
+# onClick res/layout/game.xml #generated:18
+# onClick res/layout/game.xml #generated:23
+# onClick res/layout/game.xml #generated:31
+# onClick res/layout/game.xml #generated:36
+# onClick res/layout/game.xml #generated:41
+# onClick res/layout/game.xml #generated:49
+# onClick res/layout/game.xml #generated:54
+# onClick res/layout/game.xml #generated:59
+# onClick res/layout/main.xml #generated:14
+# onClick res/layout/main.xml #generated:21
+-keepclassmembers class * { *** onClick(...); }
+
