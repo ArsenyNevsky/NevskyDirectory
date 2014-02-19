@@ -7,10 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="List" />
-    <orderEntry type="module" module-name="Sort" />
-    <orderEntry type="module" module-name="stack" />
-    <orderEntry type="module" module-name="thread" />
   </component>
 </module>
 
