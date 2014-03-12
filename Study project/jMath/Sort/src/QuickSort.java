@@ -1,33 +1,38 @@
-public class QuickSort<T extends Comparable<T>> extends AbstractSort<T> {
+public class QuickSort {
 
-    public QuickSort(T[] array) {
-        this.array = array;
-        size = array.length;
+    public void execute(int[] array, int left, int right) {
+        sort(array, left, right);
     }
 
-    public void quickSort() {
-        quickSort(0, size - 1);
+    public static void sort(int[] array, int left, int right) {
+        if (left < right) {
+            int pivotIndex = left + (right - left) / 2;
+            int pivotNewIndex = partition(array, left, right, pivotIndex);
+
+            sort(array, left, pivotNewIndex - 1);
+            sort(array, pivotNewIndex + 1, right);
+        }
     }
 
-    private void quickSort(int low, int high) {
-        int i = low;
-        int j = high;
-        T middle = array[(low + high) / 2];
-        do {
-            while(array[i].compareTo(middle) < 0) ++i;
-            while(array[j].compareTo(middle) > 0) --j;
-            if (i <= j) {
-                swap(i, j);
-                i++ ; j--;
+    private static int partition(int[] array, int left, int right, int pivotIndex) {
+        float pivotValue = array[pivotIndex];
+
+        swap(array, pivotIndex, right);
+        int storeIndex = left;
+
+        for (int i = left; i < right; i += 1) {
+            if (array[i] < pivotValue) {
+                swap(array, i, storeIndex);
+                storeIndex += 1;
             }
-        } while(i <= j);
-        if (low < j) quickSort(low, j);
-        if (i < high) quickSort(i, high);
+        }
+        swap(array, storeIndex, right);
+        return storeIndex;
     }
 
-    private void swap(int i, int j) {
-        T temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    private static void swap(int[] array, final int a, final int b) {
+        final int tmp = array[a];
+        array[a] = array[b];
+        array[b] = tmp;
     }
 }
