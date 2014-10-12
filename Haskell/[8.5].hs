@@ -1,0 +1,1 @@
+myfoldl func vA list = foldr (\x funcG y -> funcG (func y x)) id list vA
