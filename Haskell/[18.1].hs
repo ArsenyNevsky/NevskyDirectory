@@ -1,0 +1,1 @@
+bigSin x = head (take 100 (filter (\y -> y >= x) [sin(x) | x <- [1..]]))
