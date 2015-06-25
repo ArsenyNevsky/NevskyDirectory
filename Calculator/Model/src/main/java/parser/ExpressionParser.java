@@ -26,11 +26,16 @@ public class ExpressionParser {
     }
 
     public void parse() {
-        expression = expression.trim();
         try {
             checkBracketsCount();
         } catch (EmptyStackException | ExpressionParserException e) {
             System.out.println(e.getMessage());
+        }
+        String tokens[] = null;
+        try {
+            tokens = getTokens();
+        } catch (Exception e) {
+
         }
     }
 
@@ -54,6 +59,20 @@ public class ExpressionParser {
         if (!stack.isEmptyStack()) {
             throw new ExpressionParserException(Messages.getMessage("expressionParser.checkBracketsCount.error"));
         }
+    }
+
+    /**
+     *
+     * (1+2) * 3 - 40 / 2.5 - 15
+     */
+    protected String[] getTokens() {
+        Pattern pattern = Pattern.compile("[0-9]+\\.?[0-9]+|[0-9]+|\\(|\\)|\\+|\\-|\\*|\\/");
+        Matcher matcher = pattern.matcher(expression);
+        StringBuilder tokens = new StringBuilder();
+        while (matcher.find()) {
+            tokens.append(matcher.group() + ",");
+        }
+        return tokens.toString().split(",");
     }
 
     private Stack<String> stack;
