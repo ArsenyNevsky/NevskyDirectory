@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by erafiil on 25.06.15.
+ * This class is a wrapper for arraylist solving a problem with overriding methods.
  */
 public class Stack<T> {
 
@@ -23,6 +24,10 @@ public class Stack<T> {
         T element = stack.get(counter);
         stack.remove(counter--);
         return element;
+    }
+
+    public boolean isEmptyStack() {
+        return counter == 0 ? true : false;
     }
 
     protected int counter;
