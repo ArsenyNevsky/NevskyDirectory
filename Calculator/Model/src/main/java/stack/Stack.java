@@ -8,26 +8,31 @@ import java.util.ArrayList;
  */
 public class Stack<T> {
 
+    public Stack() {
+        stack = new ArrayList<>();
+    }
+
     public void push(T element) {
-        counter++;
         stack.add(element);
     }
 
     public T peek() {
-        return stack.get(counter);
+        counter = stack.size();
+        return stack.get(counter - 1);
     }
 
     public T pop() throws EmptyStackException {
-        if (counter == 0) {
+        if (stack.isEmpty()) {
             throw new EmptyStackException("Stack is empty");
         }
-        T element = stack.get(counter);
-        stack.remove(counter--);
+        counter = stack.size();
+        T element = stack.get(counter - 1);
+        stack.remove(counter - 1);
         return element;
     }
 
     public boolean isEmptyStack() {
-        return counter == 0 ? true : false;
+        return stack.isEmpty();
     }
 
     protected int counter;

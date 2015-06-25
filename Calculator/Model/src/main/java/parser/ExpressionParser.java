@@ -30,11 +30,11 @@ public class ExpressionParser {
         try {
             checkBracketsCount();
         } catch (EmptyStackException | ExpressionParserException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
 
-    private void checkBracketsCount() throws ExpressionParserException, EmptyStackException {
+    protected void checkBracketsCount() throws ExpressionParserException, EmptyStackException {
         Pattern pattern = Pattern.compile("\\(|\\)");
         Matcher matcher = pattern.matcher(expression);
         StringBuilder brackets = new StringBuilder();
