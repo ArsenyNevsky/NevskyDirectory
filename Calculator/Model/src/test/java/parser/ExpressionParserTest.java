@@ -44,7 +44,7 @@ public class ExpressionParserTest {
     public void testGetTokens() {
         expressionParser = new ExpressionParser("(2 * (2 - 1.5) + 10 / 2.5)");
         String expectedTokens[] = {"(", "2", "*", "(", "2", "-", "1.5", ")", "+", "10", "/", "2.5", ")"};
-        String actualTokens[]   = expressionParser.getTokens();
+        String actualTokens[]   = expressionParser.splitExpression();
         final int ACTUAL_TOKENS_ARRAY_SIZE = expectedTokens.length;
         for (int i = 0; i < ACTUAL_TOKENS_ARRAY_SIZE; i++) {
             assertEquals(expectedTokens[i], actualTokens[i]);

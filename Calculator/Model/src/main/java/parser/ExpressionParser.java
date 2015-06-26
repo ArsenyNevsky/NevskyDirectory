@@ -21,8 +21,8 @@ public class ExpressionParser {
         expression = arithmeticExpression;
     }
 
-    public String getExpression() {
-        return expression;
+    public String[] getTokens() {
+        return tokens;
     }
 
     public void parse() {
@@ -31,11 +31,10 @@ public class ExpressionParser {
         } catch (EmptyStackException | ExpressionParserException e) {
             System.out.println(e.getMessage());
         }
-        String tokens[] = null;
         try {
-            tokens = getTokens();
+            tokens = splitExpression();
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -57,15 +56,16 @@ public class ExpressionParser {
         }
 
         if (!stack.isEmptyStack()) {
-            throw new ExpressionParserException(Messages.getMessage("expressionParser.checkBracketsCount.error"));
+            throw new ExpressionParserException(Message.getMessage("expressionParser.checkBracketsCount.error"));
         }
     }
 
     /**
      *
-     * (1+2) * 3 - 40 / 2.5 - 15
+     * By using regular expressions, a method return an array of tokens <br>
+     * that contains such items as +, -, /, *, brackets ( ) and numbers
      */
-    protected String[] getTokens() {
+    protected String[] splitExpression() {
         Pattern pattern = Pattern.compile("[0-9]+\\.?[0-9]+|[0-9]+|\\(|\\)|\\+|\\-|\\*|\\/");
         Matcher matcher = pattern.matcher(expression);
         StringBuilder tokens = new StringBuilder();
@@ -77,4 +77,5 @@ public class ExpressionParser {
 
     private Stack<String> stack;
     private String expression;
+    private String[] tokens;
 }

@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 /**
  * Created by erafiil on 25.06.15.
  */
-public class Messages {
+public class Message {
 
     static String getMessage(String key) {
         resourceBundle = ResourceBundle.getBundle(FILE_NAME);
