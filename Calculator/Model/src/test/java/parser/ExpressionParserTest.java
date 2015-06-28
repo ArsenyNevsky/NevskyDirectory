@@ -1,6 +1,5 @@
 package parser;
 
-import junit.framework.Assert;
 import org.junit.Test;
 import stack.EmptyStackException;
 
@@ -11,13 +10,6 @@ import static org.junit.Assert.assertEquals;
  */
 public class ExpressionParserTest {
 
-    @Test
-    public void testGetExpression() throws Exception {
-        expressionParser = new ExpressionParser();
-        String expression = "((1*2))";
-        expressionParser.setArithmeticExpression(expression);
-        Assert.assertEquals(expression, expressionParser.getExpression());
-    }
 
     @Test
     public void testCheckBracketsCount1() throws ExpressionParserException, EmptyStackException {
